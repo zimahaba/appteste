@@ -13,6 +13,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'mvnw clean package'
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
         stage('Test') {
